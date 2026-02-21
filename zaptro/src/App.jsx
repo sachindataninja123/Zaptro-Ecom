@@ -7,11 +7,12 @@ import Cart from "./pages/Cart";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import axios from "axios";
+import Footer from "./components/Footer";
 
 const App = () => {
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+       <Footer />
     </div>
   );
 };
