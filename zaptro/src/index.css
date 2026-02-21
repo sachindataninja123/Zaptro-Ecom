@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body {
+  background-color: #111;
+}
+
+.cl-avatarBox {
+  width: 3rem;
+  height: 3rem;
+}
