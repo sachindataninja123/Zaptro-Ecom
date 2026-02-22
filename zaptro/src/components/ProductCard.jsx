@@ -1,9 +1,11 @@
 import React from "react";
 import { IoCartOutline } from "react-icons/io5";
 import { FaStarHalfAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-//   console.log(product);
+  //   console.log(product);
+  const navigate = useNavigate();
 
   return (
     <div className="border relative border-gray-100 rounded-2xl cursor-pointer hover:scale-105 hover:shadow-2xl transition-all p-2 h-max">
@@ -11,10 +13,14 @@ const ProductCard = ({ product }) => {
         src={product.images[0]}
         alt=""
         className="bg-gray-100 aspect-square"
+        onClick={() => navigate(`/products/${product.id}`)}
       />
       <h1 className="font-semibold line-clamp-1 p-1">{product.title}</h1>
       <div className="flex justify-between items-center ">
-        <p className="my-1 text-lg text-gray-800 font-bold"><span className="text-red-500">$</span>{product.price}</p>
+        <p className="my-1 text-lg text-gray-800 font-bold">
+          <span className="text-red-500">$</span>
+          {product.price}
+        </p>
         <p className="text-green-600 px-0.5 flex items-center gap-1 rounded-md  ">
           {Number(product.rating).toFixed(1)} <FaStarHalfAlt />
         </p>

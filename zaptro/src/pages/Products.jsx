@@ -19,11 +19,12 @@ const Products = () => {
 
   useEffect(() => {
     fetchAllProducts();
+    window.scrollTo(0, 0);
   }, []);
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
-    console.log(category);
+    setPage(1);
   };
 
   const handleBrandChange = (e) => {
@@ -33,7 +34,6 @@ const Products = () => {
 
   const pageHandler = (selectPage) => {
     setPage(selectPage);
-    setPage(1);
   };
 
   const filteredData = data?.filter((item) => {

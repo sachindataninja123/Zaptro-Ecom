@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-
-
 .cl-avatarBox {
   width: 3rem;
   height: 3rem;
@@ -9,13 +7,11 @@
 
 .arrows {
   height: 35px;
-  width : 35px;
+  width: 35px;
   margin: 1px;
 }
 
-input{
-  background-color: #ffffff;
+input {
   accent-color: red;
-  border : 1px solid #ccc;
-  color : #333;
+  border: 1px solid #ccc;
 }
