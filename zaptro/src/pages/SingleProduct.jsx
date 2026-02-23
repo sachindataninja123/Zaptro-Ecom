@@ -1,16 +1,19 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../assets/Loading4.webm";
 import BreadCrums from "../components/BreadCrums";
 import { IoCartOutline } from "react-icons/io5";
 import { FaStarHalfAlt } from "react-icons/fa";
+import { cartContext } from "../context/cartContext";
 
 const SingleProduct = () => {
   const params = useParams();
   const [singleProduct, setSingleProduct] = useState("");
 
-  console.log(singleProduct);
+  const {addToCart} = useContext(cartContext); 
+
+  // console.log(singleProduct);
 
   const getSingleProduct = async () => {
     try {
@@ -87,7 +90,7 @@ const SingleProduct = () => {
               </div>
 
               <div className="flex mt-4">
-                <button className="px-6 flex gap-2 py-2 text-lg bg-red-500 text-white rounded-md cursor-pointer ">
+                <button onClick={() => addToCart(singleProduct)} className="px-15 flex gap-2 py-2 text-lg bg-red-500 text-white rounded-md hover:rounded-full cursor-pointer transition-all ">
                   <IoCartOutline className="w-6 h-6" />
                   Add to Cart
                 </button>

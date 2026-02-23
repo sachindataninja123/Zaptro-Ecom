@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MapPin } from "lucide-react";
 import { FaCaretDown } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
@@ -10,9 +10,10 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/clerk-react";
+import { cartContext } from "../context/cartContext";
 
 const Navbar = () => {
-  const location = false;
+  const { cartItem } = useContext(cartContext);
 
   return (
     <div className="bg-white py-3 shadow-xl">
@@ -71,7 +72,7 @@ const Navbar = () => {
           <Link to={"/cart"} className="relative">
             <IoCartOutline className="h-8 w-8" />
             <h1 className="absolute -top-2.5 -right-2 flex items-center justify-center bg-red-500 h-6 w-6 text-white  rounded-full">
-              0
+              {cartItem.length}
             </h1>
           </Link>
           <div>

@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { cartContext } from "../context/cartContext";
 
 const ProductCard = ({ product }) => {
   //   console.log(product);
   const navigate = useNavigate();
+
+  const {addToCart} = useContext(cartContext);
 
   return (
     <div className="border relative border-gray-100 rounded-2xl cursor-pointer hover:scale-105 hover:shadow-2xl transition-all p-2 h-max">
@@ -24,7 +27,7 @@ const ProductCard = ({ product }) => {
           {Number(product.rating).toFixed(1)} <FaStarHalfAlt />
         </p>
       </div>
-      <button className="bg-red-500 px-3 py-1 text-lg rounded-md text-white w-full cursor-pointer flex gap-2 items-center justify-center font-semibold mt-2">
+      <button onClick={() =>  addToCart(product)} className="bg-red-500 px-3 py-1 text-lg rounded-md hover:rounded-full transition-all text-white w-full cursor-pointer flex gap-2 items-center justify-center font-semibold mt-2">
         {" "}
         <IoCartOutline className="w-6 h-6" />
         Add to cart

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { getData } from "../context/DataContext";
 import FilterSection from "../components/FilterSection";
 import Loading from "../assets/Loading4.webm";
@@ -6,9 +6,12 @@ import ProductCard from "../components/ProductCard";
 import Pagination from "../components/Pagination";
 import Lottie from "lottie-react";
 import notFound from "../assets/notfound.json";
+import { cartContext } from "../context/cartContext";
 
 const Products = () => {
   const { data, fetchAllProducts } = getData();
+
+  
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
