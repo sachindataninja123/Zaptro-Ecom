@@ -17,9 +17,8 @@ const ProductCard = ({ product }) => {
       />
       <h1 className="font-semibold line-clamp-1 p-1">{product.title}</h1>
       <div className="flex justify-between items-center ">
-        <p className="my-1 text-lg text-gray-800 font-bold">
-          <span className="text-red-500">$</span>
-          {product.price}
+        <p className="my-1 text-lg text-red-500 font-bold">
+          $ {product.price}
         </p>
         <p className="text-green-600 px-0.5 flex items-center gap-1 rounded-md  ">
           {Number(product.rating).toFixed(1)} <FaStarHalfAlt />

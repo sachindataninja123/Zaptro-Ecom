@@ -13,7 +13,7 @@ const Carousel = () => {
     fetchAllProducts();
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
   const SamplePrevArrow = (props) => {
     const { className, style, onClick } = props;
