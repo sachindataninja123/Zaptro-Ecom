@@ -4,14 +4,17 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { LuNotebookText } from "react-icons/lu";
 import { MdDeliveryDining } from "react-icons/md";
 import { GiShoppingBag } from "react-icons/gi";
-import {useUser} from "@clerk/clerk-react"
+import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
+import emptyCart from "../assets/empty-cart.png";
 
 const Cart = () => {
-  const { cartItem , updateQuantity ,deleteItem} = useContext(cartContext);
-  const {user} = useUser();
+  const { cartItem, updateQuantity, deleteItem } = useContext(cartContext);
+  const { user } = useUser();
+  const navigate = useNavigate();
 
-const totalPrice = cartItem.reduce((total, item) => total + item.price, 0);
-const totalPriceWithCeil = Math.ceil(totalPrice);
+  const totalPrice = cartItem.reduce((total, item) => total + item.price, 0);
+  const totalPriceWithCeil = Math.ceil(totalPrice);
 
   return (
     <div className="mt-10 max-w-6xl mx-auto mb-5">
@@ -40,11 +43,28 @@ const totalPriceWithCeil = Math.ceil(totalPrice);
                       </div>
                     </div>
                     <div className="bg-red-500 text-white text-xl flex gap-4 p-2 rounded-md font-bold  ">
-                      <button onClick={() => updateQuantity(cartItem , item.id , "decrease")} className="cursor-pointer">-</button>
+                      <button
+                        onClick={() =>
+                          updateQuantity(cartItem, item.id, "decrease")
+                        }
+                        className="cursor-pointer"
+                      >
+                        -
+                      </button>
                       <span>{item.quantity}</span>
-                      <button onClick={() => updateQuantity(cartItem , item.id , "increase")} className="cursor-pointer">+</button>
+                      <button
+                        onClick={() =>
+                          updateQuantity(cartItem, item.id, "increase")
+                        }
+                        className="cursor-pointer"
+                      >
+                        +
+                      </button>
                     </div>
-                    <span onClick={() => deleteItem(item.id)} className="hover:bg-white/60 transition-all rounded-full p-3 hover:shadow-2xl">
+                    <span
+                      onClick={() => deleteItem(item.id)}
+                      className="hover:bg-white/60 transition-all rounded-full p-3 hover:shadow-2xl"
+                    >
                       <FaRegTrashAlt className="text-red-500 text-2xl cursor-pointer" />
                     </span>
                   </div>
@@ -161,32 +181,43 @@ const totalPriceWithCeil = Math.ceil(totalPrice);
                 <hr className="text-gray-200 mt-2" />
                 <div className="flex justify-between items-center">
                   <h1 className="font-semibold text-lg">Grand Total</h1>
-                  <p className="font-semibold text-lg">${totalPriceWithCeil + 5 }</p>
+                  <p className="font-semibold text-lg">
+                    ${totalPriceWithCeil + 5}
+                  </p>
                 </div>
                 <h1 className="font-semibold text-gray-700 mt-7 mb-3">
-                Apply Promo Code
-              </h1>
-              <div className="flex gap-3">
-                <input
-                  type="text "
-                  placeholder="Enter Code..."
-                  className="p-2 rounded-md w-full"
-                />
-                <button className="bg-white text-black border border-gray-200 px-4 cursor-pointer py-1 rounded-md">
-                  Apply
+                  Apply Promo Code
+                </h1>
+                <div className="flex gap-3">
+                  <input
+                    type="text "
+                    placeholder="Enter Code..."
+                    className="p-2 rounded-md w-full"
+                  />
+                  <button className="bg-white text-black border border-gray-200 px-4 cursor-pointer py-1 rounded-md">
+                    Apply
+                  </button>
+                </div>
+                <button className="bg-red-500 text-white px-3 py-2 rounded-md w-full cursor-pointer mt-3">
+                  Proceed to Checkout
                 </button>
               </div>
-                <button className="bg-red-500 text-white px-3 py-2 rounded-md w-full cursor-pointer mt-3">
-              Proceed to Checkout
-            </button>
             </div>
-          
-              </div>
-            
           </div>
         </div>
       ) : (
-        <div>Cart Is Empty</div>
+        <div className="flex flex-col  gap-3 justify-center items-center h-150">
+          <h1 className="text-red-500/80 font-bold text-4xl text-muted">
+            Oh no! Your Cart is empty
+          </h1>
+          <img src={emptyCart} alt="" />
+          <button
+            onClick={() => navigate("/products")}
+            className="bg-red-500 px-5 py-2 rounded-md text-white cursor-pointer mb-3"
+          >
+            Continue Shopping
+          </button>
+        </div>
       )}
     </div>
   );

@@ -9,9 +9,7 @@ import notFound from "../assets/notfound.json";
 import { cartContext } from "../context/cartContext";
 
 const Products = () => {
-  const { data, fetchAllProducts } = getData();
-
-  
+  const { data, fetchAllProducts } = getData(); 
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");

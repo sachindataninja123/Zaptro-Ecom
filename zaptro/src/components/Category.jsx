@@ -1,8 +1,20 @@
 import React, { useEffect } from "react";
 import { getData } from "../context/DataContext";
+import { useNavigate } from "react-router-dom";
 
 const Category = () => {
-  const { categoryOnlyData } = getData();
+  const navigate = useNavigate();
+  const { data } = getData();
+
+  const getUniqueCategory = (data, property) => {
+    let newVal = data?.slice(50, 130).map((currElem) => {
+      return currElem[property];
+    });
+    newVal = [...new Set(newVal)];
+    return newVal;
+  };
+
+  const categoryOnlyData = getUniqueCategory(data, "category");
 
   return (
     <div className="bg-[#101829]">
@@ -10,7 +22,12 @@ const Category = () => {
         {categoryOnlyData?.map((item, idx) => {
           return (
             <div className="flex items-centerjustify-center" key={idx}>
-              <button className="uppercase bg-linear-to-r from-red-500 to-purple-500 text-white px-3 py-1 rounded-md cursor-pointer active:scale-95 hover:bg-red-600 transition-all">{item}</button>
+              <button
+                onClick={() => navigate(`/category/${item}`)}
+                className="uppercase bg-linear-to-r from-red-500 to-purple-500 text-white px-3 py-1 rounded-md cursor-pointer active:scale-95 hover:bg-red-600 transition-all"
+              >
+                {item}
+              </button>
             </div>
           );
         })}

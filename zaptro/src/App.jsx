@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -9,9 +9,9 @@ import Navbar from "./components/Navbar";
 import axios from "axios";
 import Footer from "./components/Footer";
 import SingleProduct from "./pages/SingleProduct";
+import CategoryProduct from "./pages/CategoryProduct";
 
 const App = () => {
-
   return (
     <div className="">
       <Navbar />
@@ -20,10 +20,11 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<SingleProduct />} />
+        <Route path="/category/:category" element={<CategoryProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-       <Footer />
+      <Footer />
     </div>
   );
 };
