@@ -11,7 +11,22 @@ import Footer from "./components/Footer";
 import SingleProduct from "./pages/SingleProduct";
 import CategoryProduct from "./pages/CategoryProduct";
 
+import { useCart } from "./context/cartContext";
+
 const App = () => {
+  const { cartItem, setCartItem } = useCart();
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cartItem");
+    if (storedCart) {
+      setCartItem(JSON.parse(storedCart));
+    }
+  },[]);
+
+  useEffect(() => {
+    localStorage.setItem("cartItem", JSON.stringify(cartItem));
+  }, [cartItem]);
+
   return (
     <div className="">
       <Navbar />

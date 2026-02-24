@@ -35,6 +35,7 @@ const Products = () => {
 
   const pageHandler = (selectPage) => {
     setPage(selectPage);
+    window.scrollTo(0, 0);
   };
 
   const filteredData = data?.filter((item) => {
@@ -71,7 +72,7 @@ const Products = () => {
 
             {filteredData?.length > 0 ? (
               <div className="flex flex-col items-center justify-center">
-                <div className="grid grid-cols-4 gap-7 mt-10">
+                <div className="grid grid-cols-2 md:grid-cols-4 md:gap-7 gap-2 mt-10">
                   {filteredData
                     ?.slice(page * 12 - 12, page * 12)
                     .map((product, idx) => {

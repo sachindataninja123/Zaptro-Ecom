@@ -4,20 +4,18 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { LuNotebookText } from "react-icons/lu";
 import { MdDeliveryDining } from "react-icons/md";
 import { GiShoppingBag } from "react-icons/gi";
-import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import emptyCart from "../assets/empty-cart.png";
 
 const Cart = () => {
   const { cartItem, updateQuantity, deleteItem } = useContext(cartContext);
-  const { user } = useUser();
   const navigate = useNavigate();
 
   const totalPrice = cartItem.reduce((total, item) => total + item.price, 0);
   const totalPriceWithCeil = Math.ceil(totalPrice);
 
   return (
-    <div className="mt-10 max-w-6xl mx-auto mb-5">
+    <div className="mt-10 max-w-6xl mx-auto mb-5 px-5 md:px-0">
       {cartItem.length > 0 ? (
         <div>
           <h1 className="text-2xl font-bold">My Cart ({cartItem.length})</h1>
@@ -36,7 +34,7 @@ const Cart = () => {
                         className="w-20 h-20 rounded-md"
                       />
                       <div>
-                        <h1 className="w-75 line-clamp-2"> {item.title}</h1>
+                        <h1 className="md:w-75 line-clamp-2"> {item.title}</h1>
                         <p className="text-red-500 font-bold text-lg">
                           ${item.price}
                         </p>
@@ -71,7 +69,7 @@ const Cart = () => {
                 );
               })}
             </div>
-            <div className="grid grid-cols-2 gap-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-20">
               <div className="bg-gray-100 rounded-md p-7 mt-4 space-y-2">
                 <h1 className="text-gray-800 font-bold text-xl">
                   Delivery Info
@@ -80,7 +78,6 @@ const Cart = () => {
                   <label htmlFor="">Full Name</label>
                   <input
                     type="text"
-                    value={user.fullName}
                     placeholder="Enter your name"
                     className="p-2 rounded-md bg-white"
                   />
@@ -93,7 +90,7 @@ const Cart = () => {
                     className="p-2 rounded-md bg-white"
                   />
                 </div>
-                <div className="flex w-full gap-5">
+                <div className="flex flex-col md:flex-row w-full gap-5">
                   <div className="flex flex-col space-y-1">
                     <label htmlFor="">State</label>
                     <input
@@ -112,7 +109,7 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <div className="flex w-full gap-5">
+                <div className="flex flex-col md:flex-row w-full gap-5">
                   <div className="flex flex-col space-y-1">
                     <label htmlFor="">Country</label>
                     <input

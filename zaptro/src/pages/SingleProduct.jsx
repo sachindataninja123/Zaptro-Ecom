@@ -29,6 +29,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     getSingleProduct();
+     window.scrollTo(0, 0);
   }, []);
 
   const originalPrice = Math.round(
@@ -40,7 +41,7 @@ const SingleProduct = () => {
       {SingleProduct ? (
         <div className="px-4 pb-4 md:px-0">
           <BreadCrums title={singleProduct.title} />
-          <div className="max-w-6xl mx-auto md:p-6 grid grid-cols-2 gap-10">
+          <div className="max-w-6xl mx-auto md:p-6 grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* product image */}
             <div className="w-full">
               <img
