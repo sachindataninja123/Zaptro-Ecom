@@ -17,7 +17,7 @@ const CategoryProduct = () => {
         `https://dummyjson.com/products/category/${category}`,
       );
 
-      console.log(res.data.products);
+      // console.log(res.data.products);
       setCateProducts(res.data.products);
     } catch (error) {
       console.log(error);

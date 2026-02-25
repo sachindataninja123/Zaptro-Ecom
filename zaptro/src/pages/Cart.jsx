@@ -11,7 +11,7 @@ const Cart = () => {
   const { cartItem, updateQuantity, deleteItem } = useContext(cartContext);
   const navigate = useNavigate();
 
-  const totalPrice = cartItem.reduce((total, item) => total + item.price, 0);
+  const totalPrice = cartItem.reduce((total, item) => total + item.price * item.quantity, 0);
   const totalPriceWithCeil = Math.ceil(totalPrice);
 
   return (

@@ -90,14 +90,14 @@ const Navbar = () => {
           {mobileView ? (
             <HiMenuAlt3
               onClick={() => setMobileView(false)}
-              className="h-7 w-7 md:hidden"
+              className="h-7 w-7 md:hidden cursor-pointer"
             />
           ) : (
             <HiMenuAlt1
               onClick={() => {
                 setMobileView(true);
               }}
-              className="h-7 w-7 md:hidden"
+              className="h-7 w-7 md:hidden cursor-pointer"
             />
           )}
         </nav>
